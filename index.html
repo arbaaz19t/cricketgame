@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       html, body {
+            height: 100vh;
+        }
+.heading{
+    text-align: center;
+}
+        .herosection {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imgbat img {
+            height: 100px;
+            width: 100px;
+        }
+
+        .imgball img {
+            height: 100px;
+            width: 100px;
+        }
+
+        .imgwicket img {
+            height: 100px;
+            width: 100px;
+        }
+        .btn{
+            padding: 0.4rem 2rem;
+            background-color: wheat;
+            border-radius: 5px;
+            cursor: pointer;
+              margin: 2px 2px;
+            color: black;
+            border: 1px solid rgb(29, 29, 29);
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="heading">CRICKET COMPARISION GAME</h1>
+    <div class="herosection">
+        <div class="batbtn">
+            <div class="imgbat"> <img src="cricket-bat_1271422-15210.jpg" alt="" srcset="">
+            </div>
+
+            <button class="btn" onclick=" 
+     ComputerChoiceE();
+     ComputerChoiceMsg=ComputerChoice;
+      MsgResult =getResult('bat', ComputerChoiceMsg);
+      showwResult('bat', ComputerChoiceMsg, MsgResult);
+     ">bat</button>
+        </div>
+
+
+        <div class="ballbtn">
+            <div class="imgball"> <img src="ball.jpg" alt="" srcset=""></div>
+
+            <button class="btn" onclick="  ComputerChoiceE();
+     ComputerChoiceMsg =  ComputerChoice;
+     MsgResult = getResult('ball',ComputerChoiceMsg);
+            showwResult('ball', ComputerChoiceMsg,MsgResult);
+ ">ball</button>
+        </div>
+
+        <div class="wicketbtn">
+            <div class="imgwicket"> <img src="wicket.png" alt="" srcset=""></div>
+            <button class="btn" onclick="
+      ComputerChoiceE();
+     ComputerChoiceMsg =  ComputerChoice;
+      MsgResult = getResult('wicket',ComputerChoiceMsg);
+   showwResult('bat', ComputerChoiceMsg, MsgResult);">wicket</button>
+        </div>
+    </div>
+
+
+    <h2 class="showtextresult" style="text-align: center;"></h2>
+
+
+    <script>
+        let ComputerChoiceMsg;
+        let ComputerChoice;
+
+        let MsgResult;
+        function ComputerChoiceE() {
+            let RanddomNumber = Math.random() * 3;
+
+            if (RanddomNumber > 0 && RanddomNumber <= 1) {
+                ComputerChoice = 'bat';
+            } else if (RanddomNumber > 1 && RanddomNumber <= 2) {
+                ComputerChoice = 'ball';
+            } else {
+                ComputerChoice = 'wicket'
+            }
+        }
+        function getResult(userMove, computerMove) {
+            if (userMove === 'bat') {
+                if (computerMove === 'ball') {
+                    return ' - You Won 🎉'
+                } else if (computerMove === 'bat') {
+                    return `- its a tiee 🤼‍♂️`
+                } else if (computerMove === 'wicket') {
+                    return '- computer has WON'
+
+                }
+            } else if (userMove === 'ball') {
+                if (computerMove === 'bat') {
+                    return (' - computer Won');
+                } else if (computerMove === 'ball') {
+                    return (`- its a tiee 🤼‍♂️`);
+                } else if (computerMove === 'wicket') {
+                    return ('- computer has WON ');
+                }
+
+            } else if (userMove === 'wicket')
+                if (computerMove === 'bat') {
+                    return ' - you Won 🎉'
+                } else if (computerMove === 'ball') {
+                    return `- You Won `
+                } else if (computerMove === 'wicket') {
+                    return `- its a tieee 🤼‍♂️`
+                }
+        }
+        function showwResult(userMove, computerMove, MsgResult) {
+            document.querySelector('.showtextresult').innerHTML = (`your choice is ${userMove}\n compuer choice is ${computerMove}\n ${MsgResult}`)
+        }
+    </script>
+</body>
+
+</html>
